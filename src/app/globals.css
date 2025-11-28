@@ -33,7 +33,7 @@
   --color-foreground: var(--foreground);
 
   /* Mapping Font Variables: Poppins & Raleway */
-  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), sans-serif;
   --font-serif: var(--font-raleway), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
   --color-border: var(--border);
