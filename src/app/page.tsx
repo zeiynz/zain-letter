@@ -1,9 +1,11 @@
-import Newsletter from "@/components/sections/Newsletter"
+import Hero from "@/components/sections/Hero"
+import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-transparent">
-      <Newsletter />
+      <Hero />
+      <Footer />
     </main>
   )
 }
