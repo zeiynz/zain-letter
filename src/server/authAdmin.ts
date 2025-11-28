@@ -39,8 +39,9 @@ export async function authAdmin(
         cookieStore.set('admin_session', sessionToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            sameSite: 'strict',
             maxAge: 86400, // 24 hours
+            path: '/',
         })
 
         return {
