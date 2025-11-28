@@ -6,13 +6,14 @@ import { Resend } from 'resend'
 import WelcomeEmail from '@/emails/WelcomeEmail'
 import { ApiResponse, SubscribePayload } from '@/types'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'hi@iamzeiyn.com'
-
 export async function subscribe(
     payload: SubscribePayload
 ): Promise<ApiResponse<{ email: string }>> {
     try {
+        // Initialize Resend inside function to avoid build-time env access
+        const resend = new Resend(process.env.RESEND_API_KEY)
+        const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'hi@iamzeiyn.com'
+
         // Validate email
         const validation = validateEmail(payload.email)
         if (!validation.valid) {
