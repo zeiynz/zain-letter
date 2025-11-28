@@ -1,23 +1,22 @@
 export const siteConfig = {
     name: "Zain Letter",
     description: "Bergabunglah dengan newsletter eksklusif untuk mendapatkan wawasan teknologi terbaru.",
-    url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://zainletter.vercel.app",
 
-    // Profil Pembuat / Author
+    // Author
     author: {
         name: "Zain",
-        url: "https://github.com/zain", // Ganti dengan URL portfolio/github kamu
+        url: "https://github.com/zeiynz",
     },
 
     // Link Media Sosial (Bisa dipakai di Footer/Contact)
     links: {
-        twitter: "https://twitter.com/zain",
-        github: "https://github.com/zain",
-        linkedin: "https://linkedin.com/in/zain",
+        instagram: "https://instagram.com/iamzeiyn",
+        linkedin: "https://linkedin.com/in/zeiyn",
     },
 
     // Konfigurasi SEO Open Graph (Tampilan saat link dishare di WA/Twitter)
-    ogImage: "/og-image.jpg", // Pastikan ada file ini di folder public/
+    ogImage: "/author.png", // Pastikan ada file ini di folder public/
 
     // Teks UI Statis (Agar konsisten)
     ui: {

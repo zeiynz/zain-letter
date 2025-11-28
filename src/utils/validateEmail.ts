@@ -1,42 +1,40 @@
-// src/utils/validateEmail.ts
+/**
+ * Email validation utility
+ * Validates email format using regex and basic sanity checks
+ */
 
-export type ValidationResult = {
-    isValid: boolean;
-    error?: string;
-    sanitizedEmail?: string;
-};
-
-export function validateEmail(email: unknown): ValidationResult {
-    // 1. Type Safety Check
-    if (typeof email !== "string") {
-        return { isValid: false, error: "Input harus berupa text." };
+export function validateEmail(email: string): { valid: boolean; error?: string } {
+    if (!email) {
+        return { valid: false, error: 'Email is required' }
     }
 
-    // 2. Sanitization (Bersihkan spasi & lowercase)
-    const cleanEmail = email.trim().toLowerCase();
+    const trimmed = email.trim()
 
-    // 3. Security: Length Check (Mencegah ReDoS / Buffer Overflow)
-    if (cleanEmail.length === 0) {
-        return { isValid: false, error: "Email wajib diisi." };
-    }
-    if (cleanEmail.length > 254) {
-        return { isValid: false, error: "Email terlalu panjang." };
+    if (trimmed.length > 254) {
+        return { valid: false, error: 'Email is too long' }
     }
 
-    // 4. Regex Validation (Standard & Secure)
-    // Regex ini memastikan format user@domain.tld tanpa karakter aneh
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // RFC 5322 simplified email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-    if (!emailRegex.test(cleanEmail)) {
-        return { isValid: false, error: "Format email tidak valid." };
+    if (!emailRegex.test(trimmed)) {
+        return { valid: false, error: 'Invalid email format' }
     }
 
-    // 5. Anti-XSS Check (Extra Layer)
-    // Memastikan tidak ada tag HTML script/iframe yang lolos
-    const dangerousChars = /[<>&"']/;
-    if (dangerousChars.test(cleanEmail)) {
-        return { isValid: false, error: "Email mengandung karakter ilegal." };
+    // Additional checks
+    const [localPart, domain] = trimmed.split('@')
+
+    if (!localPart || localPart.length > 64) {
+        return { valid: false, error: 'Invalid local part' }
     }
 
-    return { isValid: true, sanitizedEmail: cleanEmail };
+    if (domain.startsWith('-') || domain.endsWith('-')) {
+        return { valid: false, error: 'Invalid domain format' }
+    }
+
+    if (domain.split('.').some((part) => !part || part.length > 63)) {
+        return { valid: false, error: 'Invalid domain part' }
+    }
+
+    return { valid: true }
 }
