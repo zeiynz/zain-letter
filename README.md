@@ -1,6 +1,6 @@
 <div align="center">
 
-## 🚀 Zain Letter: The Modern Newsletter Stack
+## 🚀 Modern Newsletter
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -9,7 +9,7 @@
 [![Resend](https://img.shields.io/badge/Resend-000000?style=for-the-badge&logo=resend&logoColor=white)](https://resend.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-Zain Letter is a self-hosted, modular newsletter solution built on a modern full-stack foundation. This project showcases clean architecture using Next.js Server Actions, Supabase RLS (Row Level Security), and React Email templates.
+Modular newsletter solution built on a modern full-stack foundation. This project showcases clean architecture using Next.js Server Actions, Supabase RLS (Row Level Security), and React Email templates.
 
 ---
 
@@ -49,5 +49,5 @@ pnpm
 ### Step 1: Clone the Repository
 
 ```bash
-git clone [zain-letter]
-cd zain-letter
+git clone https://github.com/zeiynz/newsletter/
+cd newsletter
